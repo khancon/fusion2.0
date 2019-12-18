@@ -1,0 +1,21 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<br>
+<body>
+    <div class="container">
+        {% if user.is_authenticated %}
+            Hi {{ user.username|capfirst }}!
+            <a href="{% url 'logout' %}">logout</a> |
+            <a href="{% url 'password_reset' %}">reset password</a>
+        {% else %}
+            <p>You are not logged in</p>
+            <a href="{% url 'login' %}">login</a>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}

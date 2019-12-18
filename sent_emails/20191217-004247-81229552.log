@@ -1,0 +1,26 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: aak6sk@virginia.edu
+Date: Tue, 17 Dec 2019 05:42:47 -0000
+Message-ID: 
+ <157656136759.19976.3045265848075231897@LAPTOP-VK1IT992.fios-router.home>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/accounts/reset/MQ/5cc-7e9cfdacfd733ffc9912/
+
+Your username, in case you've forgotten: ahnaf
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------
