@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'fusionapp.apps.FusionappConfig',
+    'phonenumber_field',
     'crispy_forms',
 ]
 

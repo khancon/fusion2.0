@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block content %}
+<br>
 <head>
     <style>
       :root {
@@ -179,6 +180,16 @@
                   <!-- {{form.username}} -->
                   <input id="id_username" name="username" type="text" class="form-control" placeholder="Username" required autofocus/>
                   <label for="id_username">Username</label>
+                </div>
+                <div class="form-label-group">
+                  <!-- {{form.username}} -->
+                  <input id="id_email" name="email" type="text" class="form-control" placeholder="Email" required autofocus/>
+                  <label for="id_email">Email</label>
+                </div>
+                <div class="form-label-group">
+                  <!-- {{form.username}} -->
+                  <input id="id_phonenumber" name="phonenumber" type="text" class="form-control" placeholder="Phone Number" required autofocus/>
+                  <label for="id_phonenumber">Phone Number</label>
                 </div>
                 <!--Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.-->
                 <div class="form-label-group">
