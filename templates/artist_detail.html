@@ -1,0 +1,20 @@
+<!-- templates/artist_detail.html -->
+{% extends 'base_t.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<body>
+    <div class="container">
+        <h1>Artist #{{ object.id }}</h1>
+        <p>Artist Name: {{ object.artist_name }}</p>
+        <p>Name: {{ object.first_name }} {{ object.last_name }}</p>
+        <a type="button" href="{% url 'artist_update' object.id %}" class="btn btn-success">Update</a>
+        <a type="button" href="{% url 'artist_delete' object.id %}" class="btn btn-danger">Delete</a>
+        <a type="button" href="{% url 'artist_list'%}" class="btn btn-primary">Go Back to Artist List</a>
+    </div>
+</body>
+{% endblock %}

@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
 from django.db.models.functions import datetime
+from django.urls import reverse
 
 class CustomUser(AbstractUser):
     email = models.EmailField(max_length = 254) 
@@ -17,8 +18,13 @@ class CustomUser(AbstractUser):
         return self.username
 
 class Artist(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=150)
+    artist_name = models.CharField(max_length=150, default=None)
+    first_name = models.CharField(max_length=30, blank=True, null=True)
+    last_name = models.CharField(max_length=150, blank=True, null=True)
+    # slug = models.SlugField(null=False, unique=True) # new
+
+    def get_absolute_url(self):
+        return reverse('home')
 
 class Album(models.Model):
     NONE = 'None'
@@ -49,23 +55,25 @@ class Album(models.Model):
         (NOV,'November'),
         (DEC,'December'),
     ]
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE, default=None)
     name = models.CharField(max_length=250)
     genre = models.CharField(max_length=150)
-    month = models.CharField(max_length=30,choices=MONTHS,default=NONE)
+    month = models.CharField(max_length=30,default=None)
     year = models.BigIntegerField(validators=[MinValueValidator(0000)], null=True, blank=True)
 
 class Platform(models.Model):
-    name = models.CharField(max_length=250)
-    api_url = models.URLField(max_length = 200)
+    name = models.CharField(max_length=250, default=None)
+    api_url = models.URLField(max_length = 200, null=True, blank=True)
 
 class Playlist(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    name = models.CharField(max_length=250)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=None)
+    name = models.CharField(max_length=250, default=None)
     time_created = models.DateTimeField(default=datetime.datetime.now)
 
 class Song(models.Model):
-    album = models.ForeignKey(Album, on_delete=models.CASCADE)
-    length = models.CharField(max_length=15)
-    name = models.CharField(max_length=250)
+    album = models.ForeignKey(Album, on_delete=models.CASCADE, default=None)
+    length = models.CharField(max_length=15, default=None)
+    name = models.CharField(max_length=250, default=None)
     number_of_streams = models.BigIntegerField(null=True, blank=True)
+    platform = models.ForeignKey(Platform, on_delete=models.CASCADE, default=None)
 

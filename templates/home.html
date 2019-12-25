@@ -13,6 +13,7 @@
             Hi {{ user.username|capfirst }}!
             <a href="{% url 'logout' %}">logout</a> |
             <a href="{% url 'password_reset' %}">reset password</a>
+            <a href="{% url 'artist_add' %}">Add Artist</a>
         {% else %}
             <p>You are not logged in</p>
             <a href="{% url 'login' %}">login</a>

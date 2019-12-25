@@ -1,0 +1,26 @@
+<!-- templates/artist_detail.html -->
+{% extends 'base_t.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<body>
+    <div class="container">
+        <h1>Artist</h1>
+        <hr>
+        <a type="button" href="{% url 'artist_add' %}" class="btn btn-success">+ Add Artist</a>
+        <br>
+        <br>
+        <ul>
+        {% for artist in object_list %}
+            <li><a href="{% url 'artist_details' artist.id %}">{{ artist.artist_name}}; {{ artist.first_name }} {{artist.last_name}}</a></li>
+        {% empty %}
+            <li>No artists yet.</li>
+        {% endfor %}
+        </ul>
+    </div>
+</body>
+{% endblock %}
